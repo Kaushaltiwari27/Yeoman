@@ -5,7 +5,8 @@ import React, { createContext, useContext, useState, ReactNode } from "react";
 interface QuoteModalContextType {
   isOpen: boolean;
   selectedProduct: string;
-  openQuoteModal: (productName?: string) => void;
+  selectedCountry: string;
+  openQuoteModal: (productName?: string, countryName?: string) => void;
   closeQuoteModal: () => void;
 }
 
@@ -14,9 +15,11 @@ const QuoteModalContext = createContext<QuoteModalContextType | undefined>(undef
 export function QuoteModalProvider({ children }: { children: ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState("");
+  const [selectedCountry, setSelectedCountry] = useState("");
 
-  const openQuoteModal = (productName = "") => {
+  const openQuoteModal = (productName = "", countryName = "") => {
     setSelectedProduct(productName);
+    setSelectedCountry(countryName);
     setIsOpen(true);
   };
 
@@ -29,6 +32,7 @@ export function QuoteModalProvider({ children }: { children: ReactNode }) {
       value={{
         isOpen,
         selectedProduct,
+        selectedCountry,
         openQuoteModal,
         closeQuoteModal,
       }}

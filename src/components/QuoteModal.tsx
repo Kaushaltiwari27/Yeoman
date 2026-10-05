@@ -7,7 +7,7 @@ import { productsData } from "@/data/productsData";
 import { companyData } from "@/data/companyData";
 
 export default function QuoteModal() {
-  const { isOpen, selectedProduct, closeQuoteModal } = useQuoteModal();
+  const { isOpen, selectedProduct, selectedCountry, closeQuoteModal } = useQuoteModal();
   const [formData, setFormData] = useState({
     fullName: "",
     company: "",
@@ -26,7 +26,10 @@ export default function QuoteModal() {
     if (selectedProduct) {
       setFormData((prev) => ({ ...prev, product: selectedProduct }));
     }
-  }, [selectedProduct]);
+    if (selectedCountry) {
+      setFormData((prev) => ({ ...prev, country: selectedCountry }));
+    }
+  }, [selectedProduct, selectedCountry]);
 
   // Handle ESC key
   useEffect(() => {
