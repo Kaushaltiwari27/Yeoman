@@ -1,175 +1,146 @@
 "use client";
 
 import React, { useState } from "react";
-import { Globe, MapPin } from "lucide-react";
+import Image from "next/image";
+import { Globe, MapPin, Anchor, ShieldCheck, Compass, Sparkles } from "lucide-react";
 
 export default function GlobalMapSection() {
-  const [activeHub, setActiveHub] = useState<string | null>(null);
+  const [activeCorridor, setActiveCorridor] = useState("all");
 
-  const hubs = [
+  const corridors = [
     {
-      id: "surat",
-      name: "Surat, Gujarat (Origin & HQ)",
-      desc: "Central Trading Desk & Operations Hub",
-      x: 630,
-      y: 330,
-      isOrigin: true,
+      id: "all",
+      name: "Global Network Overview",
+      region: "Cross-Border Trade",
+      desc: "Coordinating end-to-end non-ferrous scrap flows from international sourcing yards to industrial smelters.",
+      ports: "Global Maritime Routes",
     },
     {
-      id: "gulf",
-      name: "Middle East Maritime Gateway",
-      desc: "Secondary Metal Sourcing & Port Operations",
-      x: 520,
-      y: 310,
-      path: "M 630 330 Q 575 300 520 310",
+      id: "middle-east",
+      name: "Middle East Corridor",
+      region: "Sourcing & Transit Hub",
+      desc: "Frequent scrap aggregation, inspection verification, and containerized non-ferrous bulk shipments.",
+      ports: "Jebel Ali • Dammam • Hamad",
     },
     {
       id: "southeast-asia",
-      name: "Southeast Asia Trade Corridor",
-      desc: "Industrial Smelting & Billet Production",
-      x: 770,
-      y: 370,
-      path: "M 630 330 Q 700 370 770 370",
+      name: "Southeast Asia Route",
+      region: "Industrial Smelting Gateway",
+      desc: "Direct connection with extrusion manufacturers and secondary alloy remelting foundries.",
+      ports: "Port Klang • Singapore • Haiphong",
     },
     {
       id: "europe",
       name: "European Trade Network",
-      desc: "Scrap Aggregation & Recycling Facilities",
-      x: 440,
-      y: 200,
-      path: "M 630 330 Q 520 220 440 200",
-    },
-    {
-      id: "east-asia",
-      name: "East Asia Industrial Ports",
-      desc: "Extrusion & Billet Remelting Terminals",
-      x: 820,
-      y: 270,
-      path: "M 630 330 Q 740 270 820 270",
+      region: "Recycled Metal Sourcing",
+      desc: "High-grade aluminium scrap sourcing compliant with international ISRI quality guidelines.",
+      ports: "Rotterdam • Antwerp • Genoa",
     },
   ];
 
+  const current = corridors.find((c) => c.id === activeCorridor) || corridors[0];
+
   return (
-    <section className="py-20 lg:py-28 bg-navy-900 text-white relative overflow-hidden">
+    <section className="py-20 lg:py-28 bg-navy-950 text-white relative overflow-hidden">
+      {/* Background Subtle Stars / Space Tint */}
+      <div className="absolute inset-0 bg-gradient-to-b from-navy-900 via-navy-950 to-navy-900 pointer-events-none" />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <span className="text-xs font-bold uppercase tracking-wider text-brandGreen block mb-2">
-            Cross-Border Logistics
-          </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
+        {/* Section Heading */}
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 text-xs font-bold text-brandGreen uppercase tracking-wider mb-4">
+            <Globe className="w-3.5 h-3.5" />
+            <span>International Trade Corridors</span>
+          </div>
+
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
             Connecting Reliable Supply With Global Demand
           </h2>
-          <p className="mt-3 text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl mx-auto">
-            From sourcing and verification to documentation, logistics and delivery, Yeoman Exim coordinates every stage with professionalism and transparency.
+
+          <p className="mt-4 text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl mx-auto">
+            From sourcing and verification to documentation, logistics and delivery, Yeoman Exim coordinates every stage with institutional precision and transparency.
           </p>
         </div>
 
-        {/* Minimalist World Visual */}
-        <div className="max-w-5xl mx-auto bg-navy-800/80 rounded-3xl border border-white/10 p-4 sm:p-8 backdrop-blur-sm">
-          <div className="relative aspect-[16/9] w-full">
-            <svg
-              viewBox="0 0 1000 520"
-              className="w-full h-full"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              {/* Minimalist continents outline */}
-              <g fill="#0e2338" stroke="#163452" strokeWidth="1">
-                {/* North America */}
-                <path d="M 120 120 Q 200 100 280 140 Q 260 210 210 240 Q 150 220 120 150 Z" />
-                {/* South America */}
-                <path d="M 230 270 Q 290 280 300 360 Q 270 450 230 460 Q 210 380 230 270 Z" />
-                {/* Europe */}
-                <path d="M 430 140 Q 510 130 520 200 Q 480 230 430 200 Z" />
-                {/* Africa */}
-                <path d="M 440 230 Q 530 230 540 330 Q 510 440 450 420 Q 420 320 440 230 Z" />
-                {/* Asia */}
-                <path d="M 540 140 Q 720 120 850 180 Q 860 290 770 330 Q 640 310 540 230 Z" />
-                {/* India Subcontinent */}
-                <path d="M 610 280 Q 660 290 655 370 Q 630 400 610 340 Z" fill="#14395e" stroke="#38BDF8" strokeWidth="1.2" />
-                {/* Australia */}
-                <path d="M 780 390 Q 860 380 870 450 Q 810 470 780 430 Z" />
-              </g>
+        {/* 3D Conceptual Photorealistic Globe Showcase */}
+        <div className="relative rounded-3xl overflow-hidden border border-white/15 shadow-2xl bg-black/40 backdrop-blur-md">
+          {/* Main 3D Globe Visual */}
+          <div className="relative aspect-[16/9] w-full min-h-[380px] sm:min-h-[500px] lg:min-h-[620px]">
+            <Image
+              src="/images/conceptual-trade-globe.jpg"
+              alt="Conceptual 3D Earth Globe highlighting Surat, Gujarat international non-ferrous trade routes - Yeoman Exim"
+              fill
+              priority
+              sizes="(max-width: 1280px) 100vw, 1200px"
+              className="object-cover object-center scale-100 sm:scale-102 hover:scale-105 transition-transform duration-1000 ease-out"
+            />
 
-              {/* Glowing Route Lines */}
-              {hubs
-                .filter((h) => !h.isOrigin && h.path)
-                .map((hub) => (
-                  <path
-                    key={hub.id}
-                    d={hub.path}
-                    stroke="#39B54A"
-                    strokeWidth="1.5"
-                    strokeDasharray="4 4"
-                    opacity={activeHub === hub.id ? 1 : 0.6}
-                    className="transition-opacity"
-                  />
-                ))}
+            {/* Subtle Vignette Gradient for Seamless Edge Blending */}
+            <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-transparent to-navy-950/40 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-r from-navy-950/60 via-transparent to-navy-950/60 pointer-events-none" />
 
-              {/* Hub Dots */}
-              {hubs.map((hub) => (
-                <g
-                  key={hub.id}
-                  className="cursor-pointer"
-                  onMouseEnter={() => setActiveHub(hub.id)}
-                  onMouseLeave={() => setActiveHub(null)}
-                  onClick={() => setActiveHub(hub.id)}
+            {/* Top Interactive Filter Pills */}
+            <div className="absolute top-4 left-4 right-4 sm:top-6 sm:left-6 flex flex-wrap items-center gap-2 z-20">
+              {corridors.map((c) => (
+                <button
+                  key={c.id}
+                  onClick={() => setActiveCorridor(c.id)}
+                  className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all duration-200 backdrop-blur-md ${
+                    activeCorridor === c.id
+                      ? "bg-brandGreen text-navy shadow-lg shadow-brandGreen/20 scale-105"
+                      : "bg-navy-900/80 hover:bg-navy-800 text-slate-200 border border-white/10"
+                  }`}
                 >
-                  {hub.isOrigin ? (
-                    <>
-                      <circle cx={hub.x} cy={hub.y} r="14" fill="#39B54A" opacity="0.2" className="animate-ping" />
-                      <circle cx={hub.x} cy={hub.y} r="6" fill="#39B54A" />
-                      <circle cx={hub.x} cy={hub.y} r="2.5" fill="#FFFFFF" />
-                    </>
-                  ) : (
-                    <circle
-                      cx={hub.x}
-                      cy={hub.y}
-                      r="4"
-                      fill={activeHub === hub.id ? "#38BDF8" : "#075EA8"}
-                      stroke="#FFFFFF"
-                      strokeWidth="1"
-                    />
-                  )}
-                </g>
+                  {c.name}
+                </button>
               ))}
+            </div>
 
-              {/* Surat Label */}
-              <g transform="translate(630, 310)">
-                <text
-                  x="0"
-                  y="-10"
-                  textAnchor="middle"
-                  fill="#FFFFFF"
-                  fontSize="10"
-                  fontWeight="bold"
-                  fontFamily="sans-serif"
-                >
-                  SURAT, INDIA
-                </text>
-              </g>
-            </svg>
+            {/* Floating Origin Node Badge on Top Right */}
+            <div className="hidden sm:flex absolute top-6 right-6 items-center gap-2.5 px-4 py-2 rounded-xl bg-navy-900/90 backdrop-blur-md border border-brandGreen/40 shadow-xl z-20">
+              <span className="w-2.5 h-2.5 rounded-full bg-brandGreen animate-ping"></span>
+              <div className="text-left">
+                <div className="text-[10px] font-mono uppercase tracking-wider text-slate-400">
+                  Global Hub Origin
+                </div>
+                <div className="text-xs font-extrabold text-white flex items-center gap-1">
+                  <MapPin className="w-3.5 h-3.5 text-brandGreen" />
+                  Surat, Gujarat, India
+                </div>
+              </div>
+            </div>
 
-            {/* Bottom active hub info strip */}
-            <div className="absolute bottom-2 left-2 right-2 sm:bottom-4 sm:left-4 sm:right-4 p-3 rounded-xl bg-navy-900/90 border border-white/10 flex items-center justify-between text-xs">
-              <div className="flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-brandGreen" />
-                <span className="font-bold text-white">
-                  {activeHub
-                    ? hubs.find((h) => h.id === activeHub)?.name
-                    : "Surat, Gujarat, India (Strategic Gateway)"}
-                </span>
-                <span className="text-slate-400 hidden sm:inline">
-                  — {activeHub
-                    ? hubs.find((h) => h.id === activeHub)?.desc
-                    : "Central Non-Ferrous Trading Operations Hub"}
-                </span>
+            {/* Bottom Live Corridor Information Bar */}
+            <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 p-4 sm:p-5 rounded-2xl bg-navy-900/95 backdrop-blur-md border border-white/15 shadow-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4 z-20">
+              <div className="space-y-1">
+                <div className="flex items-center gap-2">
+                  <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase bg-brandBlue text-white">
+                    {current.region}
+                  </span>
+                  <h4 className="text-sm sm:text-base font-bold text-white">
+                    {current.name}
+                  </h4>
+                </div>
+                <p className="text-xs text-slate-300 max-w-2xl leading-relaxed">
+                  {current.desc}
+                </p>
               </div>
 
-              <span className="text-[11px] text-brandGreen font-medium">
-                Active Shipping Corridor
-              </span>
+              <div className="flex items-center gap-4 text-xs border-t md:border-t-0 md:border-l border-white/10 pt-3 md:pt-0 md:pl-5 flex-shrink-0">
+                <div>
+                  <div className="text-[10px] uppercase tracking-wider text-slate-400 font-mono">
+                    Gateway Terminals
+                  </div>
+                  <div className="text-xs font-semibold text-brandGreen mt-0.5">
+                    {current.ports}
+                  </div>
+                </div>
+
+                <div className="hidden lg:flex items-center gap-1.5 text-slate-400 text-[11px]">
+                  <ShieldCheck className="w-3.5 h-3.5 text-brandGreen" />
+                  <span>Verified Shipping Routes</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
