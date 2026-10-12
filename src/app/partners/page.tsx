@@ -5,14 +5,77 @@ import { Handshake, Building2, ShieldCheck, ArrowRight, Shield, Award } from "lu
 import { partnersData, partnersMotto } from "@/data/partnersData";
 
 export const metadata: Metadata = {
-  title: "Business Partners | Strong Partnerships Build Stronger Trade",
+  title: "Commercial Alliances & Business Partners",
   description:
-    "Explore Yeoman Exim's verified business partner network, collaborating across domestic and international metal trade sectors.",
+    "Explore Yeoman Exim's verified business partner network and commercial alliances collaborating across domestic and international aluminium scrap trading sectors.",
+  keywords: [
+    "Yeoman Exim Partners",
+    "Aluminium Scrap Trade Alliances",
+    "Secondary Smelter Partners India",
+    "Global Metal Trading Associates",
+    "Surat Non-Ferrous Scrap Network",
+    "B2B Scrap Metal Counterparties",
+    "Extrusion Manufacturers Surat India",
+  ],
+  alternates: {
+    canonical: "https://yeomanexim.com/partners",
+  },
+  openGraph: {
+    title: "Commercial Alliances & Business Partners | Yeoman Exim Surat",
+    description:
+      "Strong partnerships build stronger trade: Collaborating with verified scrap aggregators and industrial consumers.",
+    url: "https://yeomanexim.com/partners",
+    images: [
+      {
+        url: "/images/hero-cargo-port.jpg",
+        width: 1200,
+        height: 675,
+        alt: "Yeoman Exim Business Partners",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Commercial Alliances & Business Partners | Yeoman Exim Surat",
+    description:
+      "Collaborating with established enterprises to expand supply reliability in non-ferrous scrap trading.",
+    images: ["/images/hero-cargo-port.jpg"],
+  },
+  other: {
+    "geo.region": "IN-GJ",
+    "geo.placename": "Surat, Gujarat, India",
+    "geo.position": "21.2173;72.8664",
+    "ICBM": "21.2173, 72.8664",
+  },
 };
 
 export default function PartnersPage() {
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://yeomanexim.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Partners",
+        item: "https://yeomanexim.com/partners",
+      },
+    ],
+  };
+
   return (
-    <div className="pt-32 lg:pt-36 pb-20 bg-white">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <div className="pt-32 lg:pt-36 pb-20 bg-white">
       {/* Header Banner */}
       <section className="bg-navy py-16 lg:py-24 text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-grid-dark opacity-10 pointer-events-none" />
@@ -109,5 +172,6 @@ export default function PartnersPage() {
         </div>
       </section>
     </div>
+    </>
   );
 }

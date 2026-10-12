@@ -17,9 +17,49 @@ import {
 import { processSteps, processCommitment } from "@/data/processData";
 
 export const metadata: Metadata = {
-  title: "Trading Process | Our International Trade Approach",
+  title: "7-Step International Trading Process",
   description:
-    "Explore Yeoman Exim's structured 7-step trade process for seamless, transparent, and dependable aluminium scrap importing and exporting.",
+    "Explore Yeoman Exim's structured 7-step international trade framework: Supplier identification, material specification, quality inspection, export documentation, and maritime delivery from Surat, India.",
+  keywords: [
+    "Aluminium Scrap Trading Process",
+    "Metal Export Documentation India",
+    "Secondary Aluminium Quality Inspection",
+    "CIF CFR FOB Trade Terms Scrap",
+    "Non-Ferrous Logistics Surat Hazira",
+    "Yeoman Exim Trading Framework",
+    "Pre-Shipment Metal Inspection Surat",
+    "Maritime Scrap Shipment Clearance",
+  ],
+  alternates: {
+    canonical: "https://yeomanexim.com/process",
+  },
+  openGraph: {
+    title: "7-Step International Trading Process | Yeoman Exim Surat",
+    description:
+      "A structured process for seamless, dependable, and transparent international aluminium scrap trade.",
+    url: "https://yeomanexim.com/process",
+    images: [
+      {
+        url: "/images/hero-cargo-port.jpg",
+        width: 1200,
+        height: 675,
+        alt: "Yeoman Exim 7-Step International Trade Process",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "7-Step International Trading Process | Yeoman Exim Surat",
+    description:
+      "A structured process for seamless international aluminium scrap trading and container logistics.",
+    images: ["/images/hero-cargo-port.jpg"],
+  },
+  other: {
+    "geo.region": "IN-GJ",
+    "geo.placename": "Surat, Gujarat, India",
+    "geo.position": "21.2173;72.8664",
+    "ICBM": "21.2173, 72.8664",
+  },
 };
 
 export default function ProcessPage() {
@@ -33,8 +73,50 @@ export default function ProcessPage() {
     Truck,
   };
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://yeomanexim.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Trading Process",
+        item: "https://yeomanexim.com/process",
+      },
+    ],
+  };
+
+  const howToSchema = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: "Yeoman Exim 7-Step International Trade Process",
+    description:
+      "Structured operational framework ensuring quality, transparent commercial contracts, and timely delivery of aluminium scrap shipments.",
+    step: processSteps.map((s, idx) => ({
+      "@type": "HowToStep",
+      position: idx + 1,
+      name: s.title,
+      text: s.summary,
+    })),
+  };
+
   return (
-    <div className="pt-32 lg:pt-36 pb-20 bg-white">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
+      />
+      <div className="pt-32 lg:pt-36 pb-20 bg-white">
       {/* Header Banner */}
       <section className="bg-navy py-16 lg:py-24 text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-grid-dark opacity-10 pointer-events-none" />
@@ -130,5 +212,6 @@ export default function ProcessPage() {
         </div>
       </section>
     </div>
+    </>
   );
 }

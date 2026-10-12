@@ -17,14 +17,103 @@ import {
 import { companyData } from "@/data/companyData";
 
 export const metadata: Metadata = {
-  title: "About Us | Built on Trust. Driven by Global Trade",
+  title: "About Us — Industrial Aluminium Scrap Exporters",
   description:
-    "Learn about Yeoman Exim Private Limited, a Surat-based international trading company specializing in sourcing, supplying, importing and exporting quality aluminium scrap.",
+    "Learn about Yeoman Exim Private Limited, a premier international trading company based in Surat, Gujarat, India specializing in sourcing, supplying, importing, and exporting quality industrial aluminium scrap.",
+  keywords: [
+    "About Yeoman Exim",
+    "Yeoman Exim Private Limited Surat",
+    "Aluminium Scrap Trading Company Gujarat",
+    "Non-Ferrous Scrap Exporter India",
+    "International Scrap Trade Surat",
+    "Aluminium Recycling Supply Chain",
+    "Yeoman Exim Vision Mission",
+    "Surat Port Corridor Scrap Trading",
+  ],
+  alternates: {
+    canonical: "https://yeomanexim.com/about",
+  },
+  openGraph: {
+    title: "About Yeoman Exim Private Limited | Surat Aluminium Scrap Exporters",
+    description:
+      "Connecting dependable suppliers with industrial buyers across international non-ferrous scrap markets from Surat, Gujarat, India.",
+    url: "https://yeomanexim.com/about",
+    images: [
+      {
+        url: "/images/hero-cargo-port.jpg",
+        width: 1200,
+        height: 675,
+        alt: "Yeoman Exim Corporate Profile",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About Yeoman Exim Private Limited | Surat Aluminium Scrap Exporters",
+    description:
+      "International trade & aluminium scrap specialization based in Surat, Gujarat, India.",
+    images: ["/images/hero-cargo-port.jpg"],
+  },
+  other: {
+    "geo.region": "IN-GJ",
+    "geo.placename": "Surat, Gujarat, India",
+    "geo.position": "21.2173;72.8664",
+    "ICBM": "21.2173, 72.8664",
+  },
 };
 
 export default function AboutPage() {
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://yeomanexim.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "About Us",
+        item: "https://yeomanexim.com/about",
+      },
+    ],
+  };
+
+  const aboutPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    name: "About Yeoman Exim Private Limited",
+    description:
+      "Corporate overview, vision, mission, and industrial aluminium scrap capabilities of Yeoman Exim Private Limited.",
+    url: "https://yeomanexim.com/about",
+    mainEntity: {
+      "@type": "Corporation",
+      name: "Yeoman Exim Private Limited",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "315, Roman Point, Hira Baug, Varachha",
+        addressLocality: "Surat",
+        addressRegion: "Gujarat",
+        postalCode: "395006",
+        addressCountry: "IN",
+      },
+    },
+  };
+
   return (
-    <div className="pt-32 lg:pt-36 pb-20 bg-white">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageSchema) }}
+      />
+      <div className="pt-32 lg:pt-36 pb-20 bg-white">
       {/* Page Header Banner */}
       <section className="bg-navy py-16 lg:py-24 text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-grid-dark opacity-10 pointer-events-none" />
@@ -208,5 +297,6 @@ export default function AboutPage() {
         </div>
       </section>
     </div>
+    </>
   );
 }

@@ -16,12 +16,71 @@ import {
 import { companyData } from "@/data/companyData";
 
 export const metadata: Metadata = {
-  title: "Sustainability | Trade That Supports a Circular Economy",
+  title: "Sustainability & Circular Metal Trade",
   description:
-    "Discover how Yeoman Exim Private Limited supports sustainable metallurgy and a circular economy through responsible aluminium scrap trading.",
+    "Discover how Yeoman Exim Private Limited advances the global circular economy by supplying high-purity aluminium scrap, conserving natural bauxite, and saving up to 95% energy versus primary smelting.",
+  keywords: [
+    "Aluminium Recycling Energy Savings",
+    "Circular Economy Scrap Metal India",
+    "Sustainable Aluminium Trade Surat",
+    "Secondary Aluminium Carbon Footprint",
+    "Green Metallurgy Yeoman Exim",
+    "Scrap Metal Eco Friendly",
+    "Bauxite Conservation Secondary Smelting",
+    "Surat Circular Economy Metals",
+  ],
+  alternates: {
+    canonical: "https://yeomanexim.com/sustainability",
+  },
+  openGraph: {
+    title: "Sustainability & Circular Metal Trade | Yeoman Exim Surat",
+    description:
+      "Trade that supports a circular economy: Environment friendly, resource efficient, cost effective secondary aluminium.",
+    url: "https://yeomanexim.com/sustainability",
+    images: [
+      {
+        url: "/images/sustainability-circular.jpg",
+        width: 1200,
+        height: 675,
+        alt: "Yeoman Exim Circular Aluminium Recycling",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sustainability & Circular Metal Trade | Yeoman Exim Surat",
+    description:
+      "Trade that supports a circular economy with responsible aluminium scrap trading.",
+    images: ["/images/sustainability-circular.jpg"],
+  },
+  other: {
+    "geo.region": "IN-GJ",
+    "geo.placename": "Surat, Gujarat, India",
+    "geo.position": "21.2173;72.8664",
+    "ICBM": "21.2173, 72.8664",
+  },
 };
 
 export default function SustainabilityPage() {
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://yeomanexim.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Sustainability",
+        item: "https://yeomanexim.com/sustainability",
+      },
+    ],
+  };
+
   const lifecycleSteps = [
     {
       step: "01",
@@ -51,7 +110,12 @@ export default function SustainabilityPage() {
   ];
 
   return (
-    <div className="pt-32 lg:pt-36 pb-20 bg-white">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <div className="pt-32 lg:pt-36 pb-20 bg-white">
       {/* Header Banner */}
       <section className="bg-navy py-16 lg:py-24 text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-grid-dark opacity-10 pointer-events-none" />
@@ -204,5 +268,6 @@ export default function SustainabilityPage() {
         </div>
       </section>
     </div>
+    </>
   );
 }
