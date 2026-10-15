@@ -123,7 +123,7 @@ export const companyData = {
       country: "India",
       full: "315, Roman Point, Hira Baug, Varachha, Surat - 395006, Gujarat, India"
     },
-    email: "Yeomanexin22@gmail.com",
+    email: "yeomanexim22@gmail.com",
     phone: "+91 97274 41431",
     phoneRaw: "+919727441431",
     whatsappLink: "https://wa.me/919727441431?text=Hello%20Yeoman%20Exim%20team%2C%20I%20would%20like%20to%20inquire%20about%20aluminium%20scrap%20trading."

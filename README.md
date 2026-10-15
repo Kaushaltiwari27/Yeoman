@@ -12,7 +12,7 @@ Yeoman Exim Private Limited is an international trading and export-import compan
 - **Headquarters**: 315, Roman Point, Hira Baug, Varachha, Surat - 395006, Gujarat, India
 - **Business Operations**: International Import • Export • Global Non-Ferrous Metal Trading
 - **Core Specialization**: Aluminium Scrap Trading
-- **Corporate Email**: [Yeomanexin22@gmail.com](mailto:Yeomanexin22@gmail.com)
+- **Corporate Email**: [yeomanexim22@gmail.com](mailto:yeomanexim22@gmail.com)
 - **Direct Desk / WhatsApp**: [+91 97274 41431](https://wa.me/919727441431)
 - **Verified Business Partners**: Hetva Enterprise, National Group Surat, 7 Star Group, Radha Raman Group, Prithvi Enterprise
 
